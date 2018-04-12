@@ -1,5 +1,5 @@
 public class HillCipher{
-  public static void main(String[] args) {
+  public static void main(String[] args) throws NumberFormatException {
       int radix=0;
       int block_size=0;
       try {
