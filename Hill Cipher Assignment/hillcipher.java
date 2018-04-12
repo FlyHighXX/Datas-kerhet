@@ -6,7 +6,7 @@ public class HillCipher{
         radix = Integer.parseInt(args[0]);
         block_size = Integer.parseInt(args[1]);
       } catch(NumberFormatException e) {
-
+        throw new NumberFormatException("You have entered a wrong input value. Try again");
       }
 
       System.out.println("radix: " + radix);
