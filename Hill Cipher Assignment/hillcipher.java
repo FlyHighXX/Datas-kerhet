@@ -4,7 +4,7 @@ public class HillCipher{
       try {
         radix = Integer.parseInt(args[0]);
         if(radix!=26){
-          System.err.println("Only radix-value 26 is supported!");
+          throw new Exception("Only radix-value 26 is supported!");
         }
       } catch(NumberFormatException e) {
         throw new NumberFormatException("Radix has to be an integer");
