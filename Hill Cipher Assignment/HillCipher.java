@@ -92,7 +92,7 @@ public class HillCipher{
 
   private HillCipher(String[] args) throws NumberFormatException,Exception{
       //Checking that the correct amount of arguments have been entered
-      if(args.length != 3){
+      if(args.length != 4){
         throw new Exception("The input values were not entered correctly. Enter on the form <radix> <block size> <key-file> <plaintext-file> <cipherfile>");
       }
       setRadix(args[0]);
