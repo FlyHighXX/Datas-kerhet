@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.Files;
 
 public class HillCipher{
   private int radix,block_size;
@@ -69,7 +70,7 @@ public class HillCipher{
       try{
           String path = "./" + file_name;
           Path p = Paths.get(path);
-          data = readAllBytes(p);
+          data = Files.readAllBytes(p);
       }catch(FileNotFoundException e){
           throw new FileNotFoundException("This file /" + file_name + " was not found.");
       }
