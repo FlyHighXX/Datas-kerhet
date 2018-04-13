@@ -83,7 +83,7 @@ public class HillCipher{
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
 
-      System.out.println(key_matrix[0][0]);
+      System.out.println(key_matrix.get(0,0));
       currCipher.printInformation();
   }
 }
