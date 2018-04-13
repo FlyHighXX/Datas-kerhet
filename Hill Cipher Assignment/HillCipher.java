@@ -106,7 +106,9 @@ public class HillCipher{
         // Building each 3x1 vector to be encrypted using the 3x3 key.
         ModuloInteger[] v=new ModuloInteger[this.block_size];
         for(int j=0; j<this.block_size; j++){
-            v[j]=ModuloInteger.valueOf(LargeInteger.valueOf(msg.get(i+j)));
+            if(i+j < msg.size()){
+                v[j]=ModuloInteger.valueOf(LargeInteger.valueOf(msg.get(i+j)));
+            }
         }
         Vector<ModuloInteger> vector = DenseVector.valueOf(v);
         Vector<ModuloInteger> encVector = DenseVector.valueOf(key.times(vector));
