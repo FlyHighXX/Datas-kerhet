@@ -122,6 +122,8 @@ public class HillCipher{
           writer = new PrintWriter(file_name, "UTF-8");
       }catch (FileNotFoundException e) {
           throw new FileNotFoundException("<cipherfile> was not found");
+      }catch (UnsupportedEncodingException e) {
+          throw new UnsupportedEncodingException("The encoding was not supported");
       }
 
       for(int i=0; i<msg.size(); i++){
