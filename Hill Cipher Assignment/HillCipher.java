@@ -62,6 +62,17 @@ public class HillCipher{
       return DenseMatrix.valueOf(tempMatrix);
   }
 
+  public byte[] readMsgFromAFile(String file_name) throws FileNotFoundException{
+      byte[] data;
+      try{
+          String path = "./" + file_name;
+          Path p = Paths.get(path);
+          data = readAllBytes(p);
+      }catch(FileNotFoundException e){
+          throw new FileNotFoundException("This file /" + key_file_name + " was not found.");
+      }
+  }
+
   private void printInformation(){
       System.out.println("radix: " + this.radix);
       System.out.println("block size:" + this.block_size);
