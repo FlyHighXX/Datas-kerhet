@@ -117,9 +117,9 @@ public class HillCipher{
   }
 
   public void writeMsgToFile(ArrayList<Integer> msg, String file_name) throws FileNotFoundException{
-      PrintWriter writer;
+      BufferedWriter writer;
       try{
-          writer = new PrintWriter(file_name, "UTF-8");
+          writer = new BufferedWriter(new FileWriter(fileName));
       }catch (FileNotFoundException e) {
           throw new FileNotFoundException("<cipherfile> was not found");
       }catch (UnsupportedEncodingException e) {
@@ -127,7 +127,7 @@ public class HillCipher{
       }
 
       for(int i=0; i<msg.size(); i++){
-        writer.print(msg.get(i));
+        writer.write(msg.get(i));
       }
       writer.close();
   }
