@@ -79,8 +79,8 @@ public class HillCipher{
       ArrayList<Integer> array = new ArrayList<Integer>();
       while(scanner.hasNextLine()){
           String[] splitLine = scanner.nextLine().split(" ");
-          for(int j=0; j<splitLine; j++){
-              array.add(splitLine[j]);
+          for(int j=0; j<splitLine.length; j++){
+              array.add(Integer.parseInt(splitLine[j]));
           }
       }
       ModuloInteger[] data = new ModuloInteger[array.size()];
