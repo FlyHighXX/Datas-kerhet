@@ -6,6 +6,7 @@ import org.jscience.mathematics.vector.Matrix;
 
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -76,6 +77,7 @@ public class HillCipher{
       }catch (IOException e) {
           throw new IOException("Something went wrong.");
       }
+      return data;
   }
 
   private void printInformation(){
