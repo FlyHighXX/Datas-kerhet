@@ -121,14 +121,13 @@ public class HillCipher{
       BufferedWriter writer;
       try{
           writer = new BufferedWriter(new FileWriter(file_name));
-      }catch (FileNotFoundException e) {
+          for(int i=0; i<msg.size(); i++){
+            writer.write(msg.get(i));
+          }
+          writer.close();
+      }catch (FileNotFoundException | IOException e) {
           throw new FileNotFoundException("<cipherfile> was not found");
       }
-
-      for(int i=0; i<msg.size(); i++){
-        writer.write(msg.get(i));
-      }
-      writer.close();
   }
 
   private void printInformation(){
