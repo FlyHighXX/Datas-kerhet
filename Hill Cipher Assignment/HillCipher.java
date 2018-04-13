@@ -123,8 +123,6 @@ public class HillCipher{
           writer = new BufferedWriter(new FileWriter(file_name));
       }catch (FileNotFoundException e) {
           throw new FileNotFoundException("<cipherfile> was not found");
-      }catch (UnsupportedEncodingException e) {
-          throw new UnsupportedEncodingException("The encoding was not supported");
       }
 
       for(int i=0; i<msg.size(); i++){
