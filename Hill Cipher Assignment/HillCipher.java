@@ -10,6 +10,7 @@ import java.io.File;
 
 public class HillCipher{
   private int radix,block_size;
+  private Matrix<ModuloInteger> key_matrix;
   private void setRadix(String radix) throws NumberFormatException,Exception{
       try {
         this.radix = Integer.parseInt(radix);
@@ -58,11 +59,16 @@ public class HillCipher{
       }catch(IndexOutOfBoundsException e){
           throw new Exception("The entered file was not a NxN matrix of block-size 3");
       }
+      this.key_matrix = DenseMatrix.valueOf(tempMatrix);
+      if(!this.key_matrix.isSquare()){
+        throw new Exception("The entered key matrix is not a NxN matrix!");
+      }
   }
 
   private void printInformation(){
       System.out.println("radix: " + this.radix);
       System.out.println("block size:" + this.block_size);
+
   }
 
   private HillCipher(String[] args) throws NumberFormatException,Exception{
