@@ -12,6 +12,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 public class HillCipher{
   private int radix,block_size;
@@ -67,14 +68,26 @@ public class HillCipher{
       return DenseMatrix.valueOf(tempMatrix);
   }
 
-  public String readMsgFromAFile(String file_name) throws FileNotFoundException, IOException{
-      byte[] data;
+  public Vector<ModuloInteger> readMsgFromAFile(String file_name) throws FileNotFoundException, IOException{
+      Scanner scanner;
+      File file = new File(file_name);
       try{
-          data = Files.readAllBytes(Paths.get(file_name));
-      }catch (IOException e) {
-          throw new IOException("Something went wrong when reading the file");
+        scanner = new Scanner(file);
+      }catch (FileNotFoundException e) {
+          throw new FileNotFoundException("<plaintext>-file was not found");
       }
-      return new String(data,Charset.ASCII_ALPHA_UPPER);
+      ArrayList<Integer> array = new ArrayList<Integer>();
+      while(scanner.hasNextLine()){
+          String[] splitLine = scanner.nextLine().split(" ");
+          for(int j=0; j<splitLine; j++){
+              array.add(splitLine[j]);
+          }
+      }
+      ModuloInteger[] data = new ModuloInteger[array.size()];
+      for(int i=0; i<array.size(); i++){
+        data[i]=array.get(i);
+      }
+      return DenseVector.valueOf(data);
   }
 
   public void encryptMsg(byte[] msg, Matrix<ModuloInteger> key){
@@ -101,9 +114,9 @@ public class HillCipher{
 
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
-      String msg = currCipher.readMsgFromAFile(args[3]);
+      Vector<ModuloInteger> msg = currCipher.readMsgFromAFile(args[3]);
 
-      System.out.println(msg);
+      System.out.println(msg.get(0));
       System.out.println(key_matrix.get(0,0));
       currCipher.printInformation();
   }
