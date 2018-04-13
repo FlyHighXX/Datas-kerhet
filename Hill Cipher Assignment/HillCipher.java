@@ -80,6 +80,10 @@ public class HillCipher{
       return data;
   }
 
+  public void encryptMsg(byte[] msg, Matrix<ModuloInteger> key){
+
+  }
+
   private void printInformation(){
       System.out.println("radix: " + this.radix);
       System.out.println("block size:" + this.block_size);
@@ -100,6 +104,9 @@ public class HillCipher{
 
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
+      byte[] msg = currCipher.readMsgFromAFile(args[3]);
+
+      System.out.println(msg);
 
       System.out.println(key_matrix.get(0,0));
       currCipher.printInformation();
