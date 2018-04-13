@@ -85,7 +85,7 @@ public class HillCipher{
       }
       ModuloInteger[] data = new ModuloInteger[array.size()];
       for(int i=0; i<array.size(); i++){
-        data[i]=array.get(i);
+        data[i]=ModuloInteger.valueOf(LargeInteger.valueOf(array.get(i)));
       }
       return DenseVector.valueOf(data);
   }
