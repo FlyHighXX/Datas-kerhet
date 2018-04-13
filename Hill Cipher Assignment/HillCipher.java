@@ -66,18 +66,14 @@ public class HillCipher{
       return DenseMatrix.valueOf(tempMatrix);
   }
 
-  public byte[] readMsgFromAFile(String file_name) throws FileNotFoundException, IOException{
+  public String readMsgFromAFile(String file_name) throws FileNotFoundException, IOException{
       byte[] data;
       try{
-          String path = "./" + file_name;
-          Path p = Paths.get(path);
-          data = Files.readAllBytes(p);
-      }catch(FileNotFoundException e){
-          throw new FileNotFoundException("This file /" + file_name + " was not found.");
+          data = Files.readAllBytes(Paths.get(file_name));
       }catch (IOException e) {
-          throw new IOException("Something went wrong.");
+          throw new IOException("Something went wrong when reading the file");
       }
-      return data;
+      return new String(data,encoding);
   }
 
   public void encryptMsg(byte[] msg, Matrix<ModuloInteger> key){
@@ -104,10 +100,9 @@ public class HillCipher{
 
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
-      byte[] msg = currCipher.readMsgFromAFile(args[3]);
+      String msg = currCipher.readMsgFromAFile(args[3]);
 
       System.out.println(msg);
-
       System.out.println(key_matrix.get(0,0));
       currCipher.printInformation();
   }
