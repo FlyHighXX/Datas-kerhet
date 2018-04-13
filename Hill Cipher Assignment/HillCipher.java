@@ -150,6 +150,7 @@ public class HillCipher{
       }
       setRadix(args[0]);
       setBlockSize(args[1]);
+      ModuloInteger.setModulus(LargeInteger.valueOf(this.radix));
   }
 
   public static void main(String[] args)throws NumberFormatException, Exception{
