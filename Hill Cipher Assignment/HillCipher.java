@@ -10,7 +10,6 @@ import java.io.File;
 
 public class HillCipher{
   private int radix,block_size;
-  private Matrix<ModuloInteger> key_matrix;
   private void setRadix(String radix) throws NumberFormatException,Exception{
       try {
         this.radix = Integer.parseInt(radix);
@@ -33,7 +32,7 @@ public class HillCipher{
       }
   }
 
-  private void createKeyMatrix(String key_file_name) throws FileNotFoundException, Exception{
+  private Matrix<ModuloInteger> createKeyMatrix(String key_file_name) throws FileNotFoundException, Exception{
       Scanner scanner;
       File file = new File(key_file_name);
       try{
@@ -59,9 +58,8 @@ public class HillCipher{
       }catch(IndexOutOfBoundsException e){
           throw new Exception("The entered file was not a NxN matrix of block-size 3");
       }
-      this.key_matrix = DenseMatrix.valueOf(tempMatrix);
-      if(!this.key_matrix.isSquare()){
-        throw new Exception("The entered key matrix is not a NxN matrix!");
+      // We already know that this matrix is 3x3. Therefore, no checks need to be made.
+      return DenseMatrix.valueOf(tempMatrix);
       }
   }
 
@@ -78,15 +76,13 @@ public class HillCipher{
       }
       setRadix(args[0]);
       setBlockSize(args[1]);
-      createKeyMatrix(args[2]);
   }
 
   public static void main(String[] args)throws NumberFormatException, Exception{
       HillCipher currCipher = new HillCipher(args);
 
-      // Checking key-file
-      String key_file_name = args[2];
-      System.out.println("key-file name: " + key_file_name);
+      // Generating the matrix from the key-file
+      Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
 
       currCipher.printInformation();
   }
