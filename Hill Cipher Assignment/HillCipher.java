@@ -128,7 +128,7 @@ public class HillCipher{
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
       Vector<ModuloInteger> msg = currCipher.readMsgFromAFile(args[3]);
-      Vector<ModuloInteger> encrypted = currCipher.encryptMsg(msg,key_matrix);
+      //Vector<ModuloInteger> encrypted = currCipher.encryptMsg(msg,key_matrix);
 
       System.out.println(msg.get(0));
       System.out.println(key_matrix.get(0,0));
