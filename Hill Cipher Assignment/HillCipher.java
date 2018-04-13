@@ -117,8 +117,9 @@ public class HillCipher{
   }
 
   public void writeMsgToFile(ArrayList<Integer> msg, String file_name) throws FileNotFoundException{
+      PrintWriter writer;
       try{
-          PrintWriter writer = new PrintWriter(file_name, "UTF-8");
+          writer = new PrintWriter(file_name, "UTF-8");
       }catch (FileNotFoundException e) {
           throw new FileNotFoundException("<cipherfile> was not found");
       }
