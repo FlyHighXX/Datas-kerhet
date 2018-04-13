@@ -111,9 +111,12 @@ public class HillCipher{
             }
         }
         Vector<ModuloInteger> vector = DenseVector.valueOf(v);
-        System.out.println(vector.getDimension());
-        System.out.println("x1: " + vector.get(0) + " x2: " + vector.get(1) + " x3: " + vector.get(2));
+        System.out.println("BEFORE");
+        System.out.println("x1: " + vector.get(0)+ " x2: " + vector.get(1) + " x3: " + vector.get(2));
         Vector<ModuloInteger> encVector = DenseVector.valueOf(key.times(vector));
+        System.out.println();
+        System.out.println("AFTER");
+        System.out.println("x1: " + vector.get(0)+ " x2: " + vector.get(1) + " x3: " + vector.get(2));
         for(int k=0; k<v.length; k++){
           resultList.add((int)encVector.get(k).moduloValue().longValue());
         }
