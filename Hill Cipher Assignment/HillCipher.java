@@ -117,7 +117,7 @@ public class HillCipher{
       return resultList;
   }
 
-  public void writeMsgToFile(ArrayList<Integer> msg, String file_name) throws FileNotFoundException{
+  public void writeMsgToFile(ArrayList<Integer> msg, String file_name) throws IOException{
       BufferedWriter writer;
       try{
           writer = new BufferedWriter(new FileWriter(file_name));
@@ -125,8 +125,8 @@ public class HillCipher{
             writer.write(msg.get(i));
           }
           writer.close();
-      }catch (FileNotFoundException | IOException e) {
-          throw new FileNotFoundException("<cipherfile> was not found");
+      }catch (IOException e) {
+          throw new IOException(e);
       }
   }
 
@@ -138,7 +138,7 @@ public class HillCipher{
 
   private HillCipher(String[] args) throws NumberFormatException,Exception{
       //Checking that the correct amount of arguments have been entered
-      if(args.length != 4){
+      if(args.length != 5){
         throw new Exception("The input values were not entered correctly. Enter on the form <radix> <block size> <key-file> <plaintext-file> <cipherfile>");
       }
       setRadix(args[0]);
@@ -152,9 +152,6 @@ public class HillCipher{
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
       ArrayList<Integer> msg = currCipher.readMsgFromAFile(args[3]);
       ArrayList<Integer> encrypted = currCipher.encryptMsg(msg,key_matrix);
-
-      System.out.println(msg.get(0));
-      System.out.println(key_matrix.get(0,0));
-      currCipher.printInformation();
+      currCipher.writeMsgToFile(encrypted,args[4]);
   }
 }
