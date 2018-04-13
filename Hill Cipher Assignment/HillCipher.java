@@ -73,6 +73,8 @@ public class HillCipher{
           data = Files.readAllBytes(p);
       }catch(FileNotFoundException e){
           throw new FileNotFoundException("This file /" + file_name + " was not found.");
+      }catch (IOException e) {
+          throw new IOException("Something went wrong.");
       }
   }
 
