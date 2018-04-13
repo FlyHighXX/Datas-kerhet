@@ -107,7 +107,7 @@ public class HillCipher{
         for(int j=0; j<this.block_size; j++){
             v[j]=ModuloInteger.valueOf(LargeInteger.valueOf(msg.get(i+j)));
         }
-        Vector<ModuloInteger> vector = DenseVector.valueOf(vector);
+        Vector<ModuloInteger> vector = DenseVector.valueOf(v);
         Vector<ModuloInteger> encVector = DenseVector.valueOf(key.times(vector));
         for(int k=0; k<v.length; k++){
           resultList.add((int)encVector.get(k).moduloValue().longValue());
@@ -116,8 +116,13 @@ public class HillCipher{
       return resultList;
   }
 
-  public void writeMsgToFile(ArrayList<Integer> msg, String file_name){
-      PrintWriter writer = new PrintWriter(file_name, "UTF-8");
+  public void writeMsgToFile(ArrayList<Integer> msg, String file_name) throws FileNotFoundException{
+      try{
+          PrintWriter writer = new PrintWriter(file_name, "UTF-8");
+      }catch (FileNotFoundException e) {
+          throw new FileNotFoundException("<cipherfile> was not found");
+      }
+
       for(int i=0; i<msg.size(); i++){
         writer.print(msg.get(i));
       }
