@@ -84,6 +84,7 @@ public class HillCipher{
               array.add(Integer.parseInt(splitLine[j]));
           }
       }
+      array = truncateArrayList(array);
       ModuloInteger[] data = new ModuloInteger[array.size()];
       for(int i=0; i<array.size(); i++){
         data[i]=ModuloInteger.valueOf(LargeInteger.valueOf(array.get(i)));
@@ -91,7 +92,18 @@ public class HillCipher{
       return DenseVector.valueOf(data);
   }
 
-  public void encryptMsg(byte[] msg, Matrix<ModuloInteger> key){
+  private ArrayList<Integer> truncateArrayList(ArrayList<Integer> array){
+      if(array.size()%3 == 1){
+        array.remove(array.size()-1);
+      }
+      else{
+        array.remove(array.size()-1);
+        array.remove(array.size()-2);
+      }
+      return array;
+  }
+
+  public void encryptMsg(Vector<ModuloInteger> msg, Matrix<ModuloInteger> key){
 
   }
 
@@ -116,6 +128,7 @@ public class HillCipher{
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
       Vector<ModuloInteger> msg = currCipher.readMsgFromAFile(args[3]);
+      Vector<ModuloInteger> encrypted = currCipher.encryptMsg(msg,key_matrix);
 
       System.out.println(msg.get(0));
       System.out.println(key_matrix.get(0,0));
