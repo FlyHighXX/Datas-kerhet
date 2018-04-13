@@ -69,7 +69,7 @@ public class HillCipher{
       return DenseMatrix.valueOf(tempMatrix);
   }
 
-  public Vector<ModuloInteger> readMsgFromAFile(String file_name) throws FileNotFoundException, IOException{
+  public ArrayList<Integer> readMsgFromAFile(String file_name) throws FileNotFoundException, IOException{
       Scanner scanner;
       File file = new File(file_name);
       try{
@@ -84,12 +84,7 @@ public class HillCipher{
               array.add(Integer.parseInt(splitLine[j]));
           }
       }
-      array = truncateArrayList(array);
-      ModuloInteger[] data = new ModuloInteger[array.size()];
-      for(int i=0; i<array.size(); i++){
-        data[i]=ModuloInteger.valueOf(LargeInteger.valueOf(array.get(i)));
-      }
-      return DenseVector.valueOf(data);
+      return truncateArrayList(array);
   }
 
   private ArrayList<Integer> truncateArrayList(ArrayList<Integer> array){
@@ -103,8 +98,29 @@ public class HillCipher{
       return array;
   }
 
-  public void encryptMsg(Vector<ModuloInteger> msg, Matrix<ModuloInteger> key){
+  public ArrayList<Integer> encryptMsg(ArrayList<Integer> msg, Matrix<ModuloInteger> key){
+      ArrayList<Integer> resultList = new ArrayList<Integer>();
+      for(int i=0; i<msg.size(); i+=3){
+        // Building each 3x1 vector to be encrypted using the 3x3 key.
+        ModuloInteger[] v=new ModuloInteger[this.block_size];
+        for(int j=0; j<this.block_size; j++){
+            v[j]=ModuloInteger.valueOf(LargeInteger.valueOf(array.get(i+j)));
+        }
+        Vector<ModuloInteger> vector = DenseVector.valueOf(vector);
+        Vector<ModuloInteger> encVector = DenseVector.valueOf(key.times(vector));
+        for(int k=0; k<v.length; k++){
+          resultList.add(encVector.get(k));
+        }
+      }
+      return resultList;
+  }
 
+  public void writeMsgToFile(ArrayList<Integer> msg, String file_name){
+      PrintWriter writer = new PrintWriter(file_name, "UTF-8");
+      for(int i=0; i<msg.size(); i++){
+        writer.print(msg.get(i));
+      }
+      writer.close();
   }
 
   private void printInformation(){
@@ -127,8 +143,8 @@ public class HillCipher{
 
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
-      Vector<ModuloInteger> msg = currCipher.readMsgFromAFile(args[3]);
-      //Vector<ModuloInteger> encrypted = currCipher.encryptMsg(msg,key_matrix);
+      ArrayList<Integer> msg = currCipher.readMsgFromAFile(args[3]);
+      ArrayList<Integer> encrypted = currCipher.encryptMsg(msg,key_matrix);
 
       System.out.println(msg.get(0));
       System.out.println(key_matrix.get(0,0));
