@@ -32,7 +32,7 @@ public class HillCipher{
       }
   }
 
-  private void createKeyMatrix(String key_file_name) throws FileNotFoundException{
+  private void createKeyMatrix(String key_file_name) throws FileNotFoundException, Exception{
       Scanner scanner;
       File file = new File(key_file_name);
       try{
@@ -42,6 +42,22 @@ public class HillCipher{
       }
 
       ModuloInteger[][] tempMatrix = new ModuloInteger[this.block_size][this.block_size];
+      try{
+          for(int i=0; i<3; i++){
+              String[] splitLine = scanner.nextLine().split(" ");
+              if(splitLine.length != 3){
+                throw new Exception("The entered key was not a 3x3 matrix");
+              }
+              for(int j=0; i<3; j++){
+                  tempMatrix[i][j]=ModuloInteger.valueOf(LargeInteger.valueOf(splitLine[j]));
+              }
+          }
+          if(scanner.hasNextLine()){
+            throw new Exception("The entered key was not a 3x3 matrix");
+          }
+      }catch(IndexOutOfBoundsException e){
+          throw new Exception("The entered file was not a NxN matrix of block-size 3");
+      }
   }
 
   private void printInformation(){
