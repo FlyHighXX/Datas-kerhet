@@ -3,6 +3,7 @@ import org.jscience.mathematics.number.ModuloInteger;
 import org.jscience.mathematics.vector.DenseMatrix;
 import org.jscience.mathematics.vector.DenseVector;
 import org.jscience.mathematics.vector.Matrix;
+import org.jscience.mathematics.vector.Vector;
 
 import java.util.Scanner;
 import java.io.FileNotFoundException;
