@@ -110,8 +110,10 @@ public class HillCipher{
                 v[j]=ModuloInteger.valueOf(LargeInteger.valueOf(msg.get(i+j)));
             }
         }
-        DenseVector<ModuloInteger> vector = DenseVector.valueOf(v);
-        DenseVector<ModuloInteger> encVector = DenseVector.valueOf(key.times(vector));
+        Vector<ModuloInteger> vector = DenseVector.valueOf(v);
+        System.out.println(vector.getDimension());
+        System.out.println("x1: " + vector.get(0) + " x2: " + vector.get(1) + " x3: " + vector.get(2));
+        Vector<ModuloInteger> encVector = DenseVector.valueOf(key.times(vector));
         for(int k=0; k<v.length; k++){
           resultList.add((int)encVector.get(k).moduloValue().longValue());
         }
