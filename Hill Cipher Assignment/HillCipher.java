@@ -119,7 +119,7 @@ public class HillCipher{
       return resultList;
   }
 
-  public void writeMsgToFile(ArrayList<Integer> msg, String file_name) throws IOException{
+  public void writeEncryptedMsgToFile(ArrayList<Integer> msg, String file_name) throws IOException{
       BufferedWriter writer;
       try{
           writer = new BufferedWriter(new FileWriter(file_name));
@@ -135,7 +135,6 @@ public class HillCipher{
   private void printInformation(){
       System.out.println("radix: " + this.radix);
       System.out.println("block size:" + this.block_size);
-
   }
 
   private HillCipher(String[] args) throws NumberFormatException,Exception{
@@ -150,11 +149,10 @@ public class HillCipher{
 
   public static void main(String[] args)throws NumberFormatException, Exception{
       HillCipher currCipher = new HillCipher(args);
-
       // Generating the matrix from the key-file
       Matrix<ModuloInteger> key_matrix = currCipher.createKeyMatrix(args[2]);
       ArrayList<Integer> msg = currCipher.readMsgFromAFile(args[3]);
       ArrayList<Integer> encrypted = currCipher.encryptMsg(msg,key_matrix);
-      currCipher.writeMsgToFile(encrypted,args[4]);
+      currCipher.writeEncryptedMsgToFile(encrypted,args[4]);
   }
 }
