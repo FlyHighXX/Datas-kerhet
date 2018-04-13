@@ -129,7 +129,7 @@ public class HillCipher{
       try{
           writer = new BufferedWriter(new FileWriter(file_name));
           for(int i=0; i<msg.size(); i++){
-            writer.write(msg.get(i));
+            writer.write(msg.get(i).toString());
           }
           writer.close();
       }catch (IOException e) {
