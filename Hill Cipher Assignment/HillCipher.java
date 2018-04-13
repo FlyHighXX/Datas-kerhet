@@ -74,7 +74,7 @@ public class HillCipher{
       }catch (IOException e) {
           throw new IOException("Something went wrong when reading the file");
       }
-      return new String(data,new Charset("A-Z"));
+      return new String(data,Charset.ASCII_ALPHA_UPPER);
   }
 
   public void encryptMsg(byte[] msg, Matrix<ModuloInteger> key){
