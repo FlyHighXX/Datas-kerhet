@@ -48,7 +48,7 @@ public class HillCipher{
               if(splitLine.length != 3){
                 throw new Exception("The entered key was not a 3x3 matrix");
               }
-              for(int j=0; i<3; j++){
+              for(int j=0; j<3; j++){
                   tempMatrix[i][j]=ModuloInteger.valueOf(LargeInteger.valueOf(splitLine[j]));
               }
           }
