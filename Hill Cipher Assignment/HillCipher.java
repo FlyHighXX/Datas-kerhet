@@ -60,7 +60,6 @@ public class HillCipher{
       }
       // We already know that this matrix is 3x3. Therefore, no checks need to be made.
       return DenseMatrix.valueOf(tempMatrix);
-      }
   }
 
   private void printInformation(){
