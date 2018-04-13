@@ -119,7 +119,7 @@ public class HillCipher{
   public void writeMsgToFile(ArrayList<Integer> msg, String file_name) throws FileNotFoundException{
       BufferedWriter writer;
       try{
-          writer = new BufferedWriter(new FileWriter(fileName));
+          writer = new BufferedWriter(new FileWriter(file_name));
       }catch (FileNotFoundException e) {
           throw new FileNotFoundException("<cipherfile> was not found");
       }catch (UnsupportedEncodingException e) {
