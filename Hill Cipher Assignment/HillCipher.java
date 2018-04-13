@@ -93,7 +93,7 @@ public class HillCipher{
       if(array.size()%3 == 1){
         array.remove(array.size()-1);
       }
-      else{
+      else if(array.size()%3 == 2){
         array.remove(array.size()-1);
         array.remove(array.size()-2);
       }
