@@ -69,7 +69,7 @@ public class HillCipher{
           Path p = Paths.get(path);
           data = readAllBytes(p);
       }catch(FileNotFoundException e){
-          throw new FileNotFoundException("This file /" + key_file_name + " was not found.");
+          throw new FileNotFoundException("This file /" + file_name + " was not found.");
       }
   }
 
