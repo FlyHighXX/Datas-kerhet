@@ -11,6 +11,7 @@ import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
+import java.nio.charset.Charset;
 
 public class HillCipher{
   private int radix,block_size;
