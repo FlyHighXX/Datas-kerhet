@@ -16,12 +16,6 @@ public class SampleDigest {
 
             printDigest(inputText, md.getAlgorithm(), digest);
 
-            byte[] inputBytes2 = inputText2.getBytes(textEncoding);
-            md.update(inputBytes2);
-            byte[] digest2 = md.digest();
-
-            printDigest(inputText2, md.getAlgorithm(), digest2);
-
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Algorithm \"" + digestAlgorithm  + "\" is not available");
         } catch (Exception e) {
