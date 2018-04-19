@@ -4,7 +4,7 @@ public class SampleDigest {
     public static void main(String[] args) {
 
         String digestAlgorithm = "SHA-256";
-        String textEncoding1 = "UTF-8";
+        String textEncoding = "UTF-8";
         String inputText = "Diaco@kth.se";
 
         try {
