@@ -1,5 +1,3 @@
-package com.iv1013.cryptohash;
-
 import java.security.*;
 
 public class SampleDigest {
