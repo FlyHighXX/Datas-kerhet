@@ -4,9 +4,8 @@ public class SampleDigest {
     public static void main(String[] args) {
 
         String digestAlgorithm = "SHA-256";
-        String textEncoding = "UTF-8";
-        String inputText = "Test message 1";
-        String inputText2 = "Test message 2";
+        String textEncoding1 = "UTF-8";
+        String inputText = "Diaco@kth.se";
 
         try {
             MessageDigest md = MessageDigest.getInstance(digestAlgorithm);
@@ -31,7 +30,7 @@ public class SampleDigest {
     }
 
     public static void printDigest(String inputText, String algorithm, byte[] digest) {
-        System.out.println("Digest for the message \"" + inputText +"\", using " + algorithm + " is:");
+        //System.out.println("Digest for the message \"" + inputText +"\", using " + algorithm + " is:");
         for (int i=0; i<digest.length; i++)
             System.out.format("%02x", digest[i]&0xff);
         System.out.println();
