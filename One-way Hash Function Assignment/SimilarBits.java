@@ -1,7 +1,7 @@
 public class SimilarBits {
     public static void main(String[] args) {
-        long h1 = 0x5ffef991b40ca0935151157c13ef6bf7;
-        long h2 = 0x712471ea8829b0fea7621ca49ae2bc97;
+        int h1 = Integer.parseInt(args[0],16);
+        int h2 = Integer.parseInt(args[1],16);
         String h1b = Integer.toBinaryString(h1);
         String h2b = Integer.toBinaryString(h2);
         int length;
