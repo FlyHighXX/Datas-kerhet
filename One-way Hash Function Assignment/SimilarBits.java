@@ -14,16 +14,16 @@ public class SimilarBits {
         int h112=0x88;
 
         int h2  =0x7ef8f22;
-        int h21 =0x1fa5604
+        int h21 =0x1fa5604;
         int h22 =0x14;
         int h23 =0x7f8daa5;
-        int h24 =0xace4030
+        int h24 =0xace4030;
         int h25 =0x6f;
         int h26 =0xc60ffb1;
         int h27 =0xcdb118b;
         int h28 =0xcf;
         int h29 =0xd98165b;
-        int h210=0xac9a4d0
+        int h210=0xac9a4d0;
         int h211=0x28;
 
         String h1b = Integer.toBinaryString(h1)+Integer.toBinaryString(h12)+Integer.toBinaryString(h13)+Integer.toBinaryString(h14)+Integer.toBinaryString(h15)+Integer.toBinaryString(h16)+Integer.toBinaryString(h17)+Integer.toBinaryString(h18)+Integer.toBinaryString(h19)+Integer.toBinaryString(h110)+Integer.toBinaryString(h111)+Integer.toBinaryString(h112);
