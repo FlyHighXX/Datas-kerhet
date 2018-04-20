@@ -6,10 +6,10 @@ public class SimilarBits {
         String h2b = Integer.toBinaryString(h2);
         int length;
         if(h1b.length() > h2b.length()){
-          length=h1b.length();
+          length=h2b.length();
         }
         else{
-          length=h2b.length();
+          length=h1b.length();
         }
         int count=0;
         for(int i=0; i<length; i++){
