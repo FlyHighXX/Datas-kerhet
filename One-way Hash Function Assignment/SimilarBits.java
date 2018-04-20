@@ -3,7 +3,7 @@ public class SimilarBits {
         int h1  =0xc15c01d;
         int h12 =0x3365b51;
         int h13 =0xf2;
-        int h14 =0xc5ec171
+        int h14 =0xc5ec171;
         int h15 =0xf5fb91a;
         int h16 =0x1b;
         int h17 =0xb01c19e;
@@ -19,19 +19,5 @@ public class SimilarBits {
         String h1b = Integer.toBinaryString(h1)+Integer.toBinaryString(h12)+Integer.toBinaryString(h13)+Integer.toBinaryString(h14)+Integer.toBinaryString(h15)+Integer.toBinaryString(h16)+Integer.toBinaryString(h17)+Integer.toBinaryString(h18)+Integer.toBinaryString(h19)+Integer.toBinaryString(h110)+Integer.toBinaryString(h111)+Integer.toBinaryString(h112);
         //String h2b = Integer.toBinaryString(h2)+Integer.toBinaryString(h22)+Integer.toBinaryString(h23)+Integer.toBinaryString(h24);
         System.out.println(h1b.length());
-        int length;
-        if(h1b.length() > h2b.length()){
-          length=h2b.length();
-        }
-        else{
-          length=h1b.length();
-        }
-        int count=0;
-        for(int i=0; i<length; i++){
-          if(h1b.charAt(i)==h2b.charAt(i)){
-            count++;
-          }
-        }
-        System.out.println(count);
     }
 }
