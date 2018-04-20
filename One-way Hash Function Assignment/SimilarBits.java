@@ -13,7 +13,7 @@ public class SimilarBits {
         }
         int count=0;
         for(int i=0; i<length; i++){
-          if(h1b.charAt(i).equals(h2b.charAt(i))){
+          if(h1b.charAt(i)==h2b.charAt(i)){
             count++;
           }
         }
