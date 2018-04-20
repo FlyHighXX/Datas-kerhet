@@ -3,8 +3,20 @@ public class SimilarBits {
         int h1 = Integer.parseInt(args[0],16);
         int h2 = Integer.parseInt(args[1],16);
         String h1b = Integer.toBinaryString(h1);
-        System.out.println(h1b);
         String h2b = Integer.toBinaryString(h2);
-        System.out.println(h2b);
+        int length;
+        if(h1b.length() > h2b.length()){
+          length=h1b.length();
+        }
+        else{
+          length=h2b.length();
+        }
+        int count=0;
+        for(int i=0; i<length; i++){
+          if(h1b.chatAt(i).equals(h2b.charAt(i))){
+            count++;
+          }
+        }
+        System.out.println(count);
     }
 }
