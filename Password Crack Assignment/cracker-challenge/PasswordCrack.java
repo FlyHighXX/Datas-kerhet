@@ -37,7 +37,7 @@ public class PasswordCrack {
     }
 
     public static List<String> readFile(String fileName) throws IOException{
-        Path file = Paths.get("./" + fileName);
+        Path file = Paths.get(fileName);
         List<String> lines;
         try {
           lines = Files.readAllLines(file, Charset.defaultCharset());

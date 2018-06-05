@@ -3,6 +3,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Set;
 import java.util.HashSet;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.charset.Charset;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 /**
  * Created by Diaco Uthman 2018-05-18
  */
@@ -14,8 +19,8 @@ public class PasswordCrack {
               throw new Exception("Use: <dictionary> <passwd>");
           }
 
-          List<String> dictionaryFile = Utilities.readFile(args[0]);
-          List<String> passwordFile = Utilities.readFile(args[1]);
+          List<String> dictionaryFile = readFile(args[0]);
+          List<String> passwordFile = readFile(args[1]);
           List<Crack> users = loadUserData(passwordFile,dictionaryFile);
 
           List<Thread> threads = new LinkedList<>();
@@ -29,6 +34,24 @@ public class PasswordCrack {
         System.out.println(e.getMessage());
       }
 
+    }
+
+    public static List<String> readFile(String fileName) throws IOException{
+        Path file = Paths.get(fileName);
+        List<String> lines;
+        try {
+          lines = Files.readAllLines(file, Charset.defaultCharset());
+        } catch (IOException e) {
+          throw new IOException(String.format("Couldn't read the file: \"%s\"\n", fileName));
+        }
+        List<String> emptyLines = new ArrayList<>();
+        for (String line : lines){
+            if (line.equals("")){
+                emptyLines.add(line);
+            }
+        }
+        lines.removeAll(emptyLines);
+        return lines;
     }
 
     public static List<Crack> loadUserData(List<String> lines,List<String> dict){
